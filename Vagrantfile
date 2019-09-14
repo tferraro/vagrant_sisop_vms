@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+is_server = ENV['SISOP_VM_TYPE']
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -12,11 +14,8 @@ Vagrant.configure('2') do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = 'ubuntu/xenial32'
-  config.vm.hostname = "utnso-gui"
-
-  config.ssh.username = 'utnso'
-  config.ssh.password = 'utnso'
+  config.vm.box = 'ubuntu/bionic64'
+  config.vm.hostname = "utnso-#{is_server ? "server": "gui"}"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -55,8 +54,8 @@ Vagrant.configure('2') do |config|
   #
   config.vm.provider 'virtualbox' do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
-    vb.name = 'UTN SO - Lubuntu'
+    # vb.gui = true
+    vb.name = "UTN SO - #{is_server ? "Ubuntu Server": "Lubuntu"}"
 
     # Customize the amount of memory on the VM:
     vb.memory = '1024'
@@ -74,15 +73,12 @@ Vagrant.configure('2') do |config|
   # SHELL
   config.vm.provision :shell, path: 'vagrant/provision.sh', args: 'stable', privileged: true
   config.vm.provision :shell, path: 'vagrant/provision-locale.sh', args: 'stable', privileged: true
-  config.vm.provision :reload
   config.vm.provision :shell, path: 'vagrant/install-rvm.sh', args: 'stable', privileged: false
-  config.vm.provision :shell, path: 'vagrant/install-ruby.sh', args: '2.4.1', privileged: false
+  config.vm.provision :shell, path: 'vagrant/install-ruby.sh', args: '2.6.4', privileged: false
 
   # Installs Graphic Interface
-  config.vm.provision :shell, inline: 'sudo apt-get install -y lxde lubuntu-core lubuntu-icon-theme lubuntu-restricted-extras', privileged: true
-  # Permit anyone to start the GUI
-  config.vm.provision :shell, inline: "sudo sed -i 's/allowed_users=.*$/allowed_users=anybody/' /etc/X11/Xwrapper.config", privileged: true
-  # Installs virtual box additions
-  config.vm.provision :shell, inline: 'sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11', privileged: true
-  config.vm.provision :shell, inline: 'sudo VBoxClient-all', privileged: true
+  config.vm.provision :shell, path: 'vagrant/install-gui.sh', privileged: true unless is_server
+
+  # Restarts the VM to ensure changes are made
+  config.vm.provision :reload
 end

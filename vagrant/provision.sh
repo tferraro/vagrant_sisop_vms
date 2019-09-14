@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
-apt-get -y install aptitude gcc gdb git vim libncurses5 valgrind tig make autotools-dev strace emacs nano openjdk-8-jdk libcunit1 libevent1-dev ssh libfuse-dev build-essential g++ libcunit1-dev curl htop tree wget libreadline6 libreadline6-dev docker docker-compose
+apt-get -y install aptitude gcc gdb git vim libncurses5 valgrind tig make autotools-dev strace emacs nano openjdk-8-jdk libcunit1 libevent1-dev ssh libfuse-dev build-essential g++ libcunit1-dev curl htop tree wget libreadline libreadline-dev docker docker-compose
 
 # User creation
 echo 'Creating user utnso'
