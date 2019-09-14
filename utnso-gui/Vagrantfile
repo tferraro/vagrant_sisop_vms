@@ -13,7 +13,10 @@ Vagrant.configure('2') do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = 'ubuntu/xenial32'
-  config.vm.hostname = "ubuntu-server"
+  config.vm.hostname = "utnso-gui"
+
+  config.ssh.username = 'utnso'
+  config.ssh.password = 'utnso'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -53,7 +56,7 @@ Vagrant.configure('2') do |config|
   config.vm.provider 'virtualbox' do |vb|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = true
-    vb.name = 'UTN SO - Ubuntu Server'
+    vb.name = 'UTN SO - Lubuntu'
 
     # Customize the amount of memory on the VM:
     vb.memory = '1024'
@@ -74,4 +77,12 @@ Vagrant.configure('2') do |config|
   config.vm.provision :reload
   config.vm.provision :shell, path: 'vagrant/install-rvm.sh', args: 'stable', privileged: false
   config.vm.provision :shell, path: 'vagrant/install-ruby.sh', args: '2.4.1', privileged: false
+
+  # Installs Graphic Interface
+  config.vm.provision :shell, inline: 'sudo apt-get install -y lxde lubuntu-core lubuntu-icon-theme lubuntu-restricted-extras', privileged: true
+  # Permit anyone to start the GUI
+  config.vm.provision :shell, inline: "sudo sed -i 's/allowed_users=.*$/allowed_users=anybody/' /etc/X11/Xwrapper.config", privileged: true
+  # Installs virtual box additions
+  config.vm.provision :shell, inline: 'sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11', privileged: true
+  config.vm.provision :shell, inline: 'sudo VBoxClient-all', privileged: true
 end
