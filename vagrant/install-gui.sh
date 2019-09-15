@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 # Install Lubutntu
+apt-get update
 apt-get install -y lubuntu-desktop
 sed -i "s/allowed_users=.*$/allowed_users=anybody/" /etc/X11/Xwrapper.config
 
