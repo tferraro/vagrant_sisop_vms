@@ -49,7 +49,4 @@ Dado que nuestro trabajo práctico suele tener módulos entre computadores que i
 ![Settings VM Network](images/settings_network.png)
 
 
-## Versiones
-- Versión 6.0: La primera con Vagrant
-
 ©2019 Sistemas Operativos UTN FRBA
