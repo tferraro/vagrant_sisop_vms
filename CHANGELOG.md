@@ -1,5 +1,6 @@
-# VMs en Vagrant - Listado de Cambios
+# VMs SisOp - Listado de Cambios
 
-## 0.1.0
-
-- Agregados los archivos con soporte para Vagrant de creación de la VM Server 5.0.1.
+## 6.0.0
+- Soporte de creación de VMs usando Vagrant
+- Cambio a 64bits
+- Actualización a Ubuntu 18.04LTS
