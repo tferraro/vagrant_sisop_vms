@@ -42,9 +42,9 @@ Cada pc tiene diferentes recursos disponibles, por lo que por defecto estas VMs 
 
 
 #### Conexión de Red
-Por defecto la máquina virtual se crea en una red privada que se engancha del internet de la máquina anfitrión para funcionar (tipo **NAT**). Eso implicará que máquinas agenas a la máquina anfitrión no podrán conectarse a la VM.
+Por defecto la máquina virtual se crea en una red privada que se engancha del internet de la máquina anfitrión para funcionar (tipo **NAT**). Eso implicará que máquinas ajenas a la máquina anfitrión no podrán conectarse a la VM.
 
-Dado que nuestro trabajo práctico suele tener módulos entre computadores que interactúan entre sí usando la red, en esos casos es necesario cambiar la conexión a **Adaptador Puente** (*Bridged Adapter*) enganchándolo de la placa de red donde existan el resto de las máquinas.
+Dado que nuestro trabajo práctico suele tener módulos interactuando entre computadoras, en esos casos es necesario cambiar la conexión a **Adaptador Puente** (*Bridged Adapter*). Esto provocará que cada máquina virtual se convierta en un elemento de la red local del anfitrión y todas las virtuales puedan verse en la misma red.
 
 ![Settings VM Network](images/settings_network.png)
 
