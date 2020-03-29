@@ -12,6 +12,7 @@ Este repo contiene todas las instrucciones para que la herramienta Vagrant pueda
 - Las VMs se van a **armar** (*provision*) una única vez mediante la herramienta Vagrant.
 
 ## Cómo instalamos la VM?
+Nota: Cuando hablamos de la _"consola"_ en Windows, estamos hablando de la línea de comandos del sistema. Si bien depende mucho de la configuración de cada computadora, asegúrense de ejecutarla **como administrador**.
 
 ### Instalá VirtualBox y Vagrant
 
@@ -48,5 +49,14 @@ Dado que nuestro trabajo práctico suele tener módulos interactuando entre comp
 
 ![Settings VM Network](images/settings_network.png)
 
+
+### Problemas Comunes
+> `No usable default provider could be found for your system.`
+
+Este mensaje suele aparecer cuando el usuario de Windows no tiene los suficientes permisos. Volvé a ejecutar la consola como administrador.
+
+> `The Hyper-V cmdlets for PowerShell are not available!`
+
+Vagrant necesita tener que Windows tenga habilitadas las utilidades de virtualización, activalas en "Activar o desactivar características de Windows".
 
 ©2019 Sistemas Operativos UTN FRBA
