@@ -16,7 +16,7 @@ Nota: Cuando hablamos de la _"consola"_ en Windows, estamos hablando de la líne
 
 ### Instalá VirtualBox y Vagrant
 
-[VirtualBox] es el software de virtualización que usaremos para correr la VM. Pueden descargarlo e instalarlo desde [https://www.virtualbox.org/](https://www.virtualbox.org/)
+[VirtualBox] es el software de virtualización que usaremos para correr la VM. Pueden descargarlo e instalarlo desde [https://www.virtualbox.org/](https://www.virtualbox.org/). **Importante**: Si tenes una versión de Vagrant menor a la 2.2.7, solo están soportadas hasta la versión 6.0 de Virtualbox.
 
 Por otro lado, [Vagrant](https://www.vagrantup.com/) es una herramienta que permite armar máquinas virtuales desde contenedores (llamadas cajas) de una VM ya prefabricada y configurarla para con un solo comando, tenerla corriendo y lista para usarse, entre otras de las cuantas funcionalidades que tiene.
 
@@ -34,6 +34,8 @@ Para elegir manualmente el flavor, solo hace falta mencionarlo como `vagrant up 
 Este comando va a crear la VM y dejarla corriendo, pero sin pantalla gráfica visibile. Para abrirla solo necesitamos abrir VirtualBox y hacer doble click sobre la VM:
 
 ![Open VM GUI](images/open_gui.png)
+
+En el caso de que encuentren un error donde el provider de virtualización sea HyperX, a los comandos de vagrant agregar `provider=virtualbox`, para asegurarnos que se esté creando en virtualbox.
 
 ### Configurar la Máquina Virtual según tu PC
 Cada pc tiene diferentes recursos disponibles, por lo que por defecto estas VMs se crean con 1GB de RAM y 16MB de memoria de video. Si tenés una máquina más potente y poder asignarle mayores recursos, podes modificarlos haciendo click-derecho sobre la VM y Configuraciones (Settings):
@@ -54,9 +56,5 @@ Dado que nuestro trabajo práctico suele tener módulos interactuando entre comp
 > `No usable default provider could be found for your system.`
 
 Este mensaje suele aparecer cuando el usuario de Windows no tiene los suficientes permisos. Volvé a ejecutar la consola como administrador.
-
-> `The Hyper-V cmdlets for PowerShell are not available!`
-
-Vagrant necesita tener que Windows tenga habilitadas las utilidades de virtualización, activalas en "Activar o desactivar características de Windows".
 
 ©2019 Sistemas Operativos UTN FRBA
