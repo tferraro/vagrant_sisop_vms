@@ -1,6 +1,8 @@
+# ESTAMOS TRABAJANDO EN ESTO
+Aceptamos comentarios, quejas y consultas, pero cualquier cosa si quieren las VMs posta posta seguimos en la V5.0 que estan en el blog: https://www.utnso.com.ar/recursos/maquinas-virtuales/
 
-# VM de Sistemas Operativos - WORK IN PROGRESS
-A partir de la versión 6.0 (Que aun no esta productiva) de las VMs, no solo pasamos a versionarlas en este repo, sino que deprecamos la necesidad de bajarse múltiples zips para poder usarla!
+## VM de Sistemas Operativos
+A partir de la versión 6.0 (Que aun no esta 100% lista para usarse) de las VMs, no solo pasamos a versionarlas en este repo, sino que deprecamos la necesidad de bajarse múltiples zips para poder usarla!
 
 Tengan en cuenta que seguirán funcionando sobre VirtualBox.
 
