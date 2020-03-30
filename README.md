@@ -1,6 +1,6 @@
 
-# VM de Sistemas Operativos
-A partir de la versión 6.0 de las VMs, no solo pasamos a versionarlas en este repo, sino que deprecamos la necesidad de bajarse múltiples zips para poder usarla!
+# VM de Sistemas Operativos - WORK IN PROGRESS
+A partir de la versión 6.0 (Que aun no esta productiva) de las VMs, no solo pasamos a versionarlas en este repo, sino que deprecamos la necesidad de bajarse múltiples zips para poder usarla!
 
 Tengan en cuenta que seguirán funcionando sobre VirtualBox.
 
