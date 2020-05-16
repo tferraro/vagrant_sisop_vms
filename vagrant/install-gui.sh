@@ -14,8 +14,8 @@ VBoxClient --checkhostversion
 VBoxClient --seamless
 
 # Install Eclipse IDE
-wget -q http://espejito.fder.edu.uy/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-cpp-2019-03-R-linux-gtk-x86_64.tar.gz
-tar -zxvf eclipse-cpp-2019-03-R-linux-gtk-x86_64.tar.gz
+wget -O eclipse-cpp.tar.gz -q "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-cpp-2020-03-R-incubation-linux-gtk-x86_64.tar.gz&r=1"
+tar -zxvf eclipse-cpp.tar.gz
 mv -f eclipse /opt
 
 mkdir -p /home/utnso/.local/share/applications
@@ -48,4 +48,4 @@ cp /var/lib/snapd/desktop/applications/code_code.desktop /home/utnso/Desktop/
 # echo "Categories=Development;IDE;" >> /home/utnso/.local/share/applications/vscode.desktop
 
 # Utils
-apt-get install -y aptitude gcc gdb git vim libncurses5 valgrind tig make autotools-dev strace emacs nano openjdk-8-jdk libcunit1 libevent1-dev ssh libfuse-dev build-essential g++ libcunit1-dev curl htop tree wget libreadline7 libreadline-dev docker docker-compose terminator chromium-browser bless xclip
+apt-get install -y terminator chromium-browser bless xclip

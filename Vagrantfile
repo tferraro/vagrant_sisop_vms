@@ -5,6 +5,7 @@ adapter_mode = ENV['SISOP_NETWORK_TYPE'] == 'public'
 
 def base_provision(config)
   config.vm.provision :shell, path: 'vagrant/provision.sh', args: 'stable', privileged: true
+  config.vm.provision :shell, path: 'vagrant/provision-extra.sh', args: 'stable', privileged: true
   config.vm.provision :shell, path: 'vagrant/provision-locale.sh', args: 'stable', privileged: true
   config.vm.provision :shell, path: 'vagrant/install-rvm.sh', args: 'stable', privileged: false
   config.vm.provision :shell, path: 'vagrant/install-ruby.sh', args: '2.6.4', privileged: false
