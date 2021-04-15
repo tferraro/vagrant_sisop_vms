@@ -13,39 +13,48 @@ VBoxClient --display
 VBoxClient --checkhostversion
 VBoxClient --seamless
 
-# Install Eclipse IDE
-wget -O eclipse-cpp.tar.gz -q "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-03/R/eclipse-cpp-2020-03-R-incubation-linux-gtk-x86_64.tar.gz&r=1"
-tar -zxvf eclipse-cpp.tar.gz
-mv -f eclipse /opt
+# apt install -y snapd
 
+# Create utnso dirs
 mkdir -p /home/utnso/.local/share/applications
-echo "[Desktop Entry]" > /home/utnso/.local/share/applications/eclipse.desktop
-echo "Name=Eclipse" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Type=Application" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Exec=/opt/eclipse/eclipse" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Terminal=false" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Icon=/opt/eclipse/icon.xpm" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Comment=Integrated Development Environment" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "NoDisplay=false" >> /home/utnso/.local/share/applications/eclipse.desktop
-echo "Categories=Development;IDE;" >> /home/utnso/.local/share/applications/eclipse.desktop
-
 mkdir -p /home/utnso/Desktop/
-cp /home/utnso/.local/share/applications/eclipse.desktop /home/utnso/Desktop/
 
-# Install VS Code
-apt install -y snapd
-snap install code --classic
+get_package() # Params: link, src, dest
+{
+    wget -O "$2.tar.gz" -q "$1"
+    tar -zxvf "$2.tar.gz"
+    mv -f "$2" "$3"
+}
 
-cp /var/lib/snapd/desktop/applications/code_code.desktop /home/utnso/Desktop/
-# echo "[Desktop Entry]" > /home/utnso/.local/share/applications/vscode.desktop
-# echo "Name=Virtual Studio Code" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Type=Application" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Exec=??????" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Terminal=false" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Icon=??????" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Comment=Integrated Development Environment" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "NoDisplay=false" >> /home/utnso/.local/share/applications/vscode.desktop
-# echo "Categories=Development;IDE;" >> /home/utnso/.local/share/applications/vscode.desktop
+create_desktop_entry() # Params: entry_name, name, exec icon
+{
+    { 
+        echo "[Desktop Entry]"
+        echo "Name=$2"
+        echo "Type=Application"
+        echo "Exec=$3"
+        echo "Terminal=false"
+        echo "Icon=$4"
+        echo "Comment=Integrated Development Environment"
+        echo "NoDisplay=false"
+        echo "Categories=Development;IDE;"
+        echo "Version=$5"
+    } > "/home/utnso/.local/share/applications/$1.desktop"
+
+    cp "/home/utnso/.local/share/applications/$1.desktop" "/home/utnso/Desktop/"
+}
+
+# Install Eclipse IDE
+get_package "https://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/2021-03/R/eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz" "eclipse" "/opt/eclipse-cpp"
+create_desktop_entry "eclipse-cpp" "Eclipse IDE" "/opt/eclipse-cpp/eclipse" "/opt/eclipse-cpp/icon.xpm"
+
+# Install Visual Studio Code
+get_package "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64" "VSCode-linux-x64" "/opt/vscode"
+create_desktop_entry "vscode" "Visual Studio Code" "/opt/vscode/code" "/opt/vscode/resources/app/resources/linux/code.png"
+
+# Install CLion
+get_package "https://download.jetbrains.com/cpp/CLion-2021.1.tar.gz" "clion-2021.1" "/opt/clion"
+create_desktop_entry "clion" "CLion" "/opt/clion/bin/clion.sh" "/opt/clion/bin/clion.svg"
 
 # Utils
 apt-get install -y terminator chromium-browser bless xclip

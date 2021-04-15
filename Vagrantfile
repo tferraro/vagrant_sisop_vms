@@ -13,7 +13,7 @@ end
 
 Vagrant.configure('2') do |config|
   config.vm.define "server", autostart: false do |server|
-    server.vm.box = 'ubuntu/bionic64'
+    server.vm.box = 'ubuntu/focal64'
     server.vm.hostname = "utnso-server"
 
     server.vm.network 'public_network' if adapter_mode
@@ -30,7 +30,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.define "lubuntu" do |gui|
-    gui.vm.box = 'ubuntu/bionic64'
+    gui.vm.box = 'ubuntu/focal64'
     gui.vm.hostname = "utnso-gui"
 
     gui.vm.network 'public_network' if adapter_mode
