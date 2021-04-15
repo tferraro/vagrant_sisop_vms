@@ -2,7 +2,7 @@
 
 # Install Lubutntu
 apt-get update
-apt-get install -y lubuntu-desktop
+apt-get install -y --no-install-recommends lubuntu-desktop
 sed -i "s/allowed_users=.*$/allowed_users=anybody/" /etc/X11/Xwrapper.config
 
 # Install VirtualBox Guest Additions
@@ -26,7 +26,7 @@ get_package() # Params: link, src, dest
     mv -f "$2" "$3"
 }
 
-create_desktop_entry() # Params: entry_name, name, exec icon
+create_desktop_entry() # Params: entry_name, name, exec, icon
 {
     { 
         echo "[Desktop Entry]"
@@ -38,7 +38,6 @@ create_desktop_entry() # Params: entry_name, name, exec icon
         echo "Comment=Integrated Development Environment"
         echo "NoDisplay=false"
         echo "Categories=Development;IDE;"
-        echo "Version=$5"
     } > "/home/utnso/.local/share/applications/$1.desktop"
 
     cp "/home/utnso/.local/share/applications/$1.desktop" "/home/utnso/Desktop/"
