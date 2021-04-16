@@ -63,4 +63,4 @@ get_package "https://download.jetbrains.com/cpp/CLion-2021.1.tar.gz" "clion-2021
 create_desktop_entry "clion" "CLion" "/opt/clion/bin/clion.sh" "/opt/clion/bin/clion.svg" "2021.1"
 
 # Utils
-apt-get install -y terminator chromium-browser bless xclip
+apt-get install -y terminator chromium-browser bless xclip gedit
