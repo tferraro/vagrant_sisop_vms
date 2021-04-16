@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
-apt-get -y install aptitude gcc gdb git vim libncurses5 valgrind make autotools-dev strace emacs nano openjdk-8-jdk libcunit1 libevent1-dev ssh libfuse-dev build-essential g++ libcunit1-dev curl htop tree wget libreadline7 libreadline-dev manpages-posix-dev
+apt-get -y install aptitude gcc gdb git vim libncurses5 valgrind make autotools-dev strace emacs nano openjdk-8-jdk libcunit1 libevent-dev ssh libfuse-dev build-essential g++ libcunit1-dev curl htop tree wget libreadline-dev manpages-posix-dev
 
 # User creation
 echo 'Creating user utnso'
