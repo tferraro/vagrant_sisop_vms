@@ -26,8 +26,10 @@ get_package() # Params: link, src, dest
     mv -f "$2" "$3"
 }
 
-create_desktop_entry() # Params: entry_name, name, exec, icon, version
+create_desktop_entry() # Params: command, name, exec, icon, version
 {
+    sudo ln -s "$3" "/usr/local/bin/$1"
+
     { 
         echo "[Desktop Entry]"
         echo "Name=$2"
@@ -51,6 +53,10 @@ create_desktop_entry "eclipse" "Eclipse IDE" "/opt/eclipse/eclipse" "/opt/eclips
 # Install Visual Studio Code
 get_package "https://update.code.visualstudio.com/1.55.2/linux-x64/stable" "VSCode-linux-x64" "/opt/vscode"
 create_desktop_entry "code" "Visual Studio Code" "/opt/vscode/code" "/opt/vscode/resources/app/resources/linux/code.png" "1.55.2"
+
+# code --no-sandbox --install-extension ms-vscode.cpptools cpptools-linux.vsix
+# code --no-sandbox --install-extension MS-vsliveshare.vsliveshare
+# code --no-sandbox --install-extension ms-vscode.makefile-tools
 
 # Install CLion
 get_package "https://download.jetbrains.com/cpp/CLion-2021.1.tar.gz" "clion-2021.1" "/opt/clion"
