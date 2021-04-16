@@ -26,7 +26,7 @@ get_package() # Params: link, src, dest
     mv -f "$2" "$3"
 }
 
-create_desktop_entry() # Params: entry_name, name, exec, icon
+create_desktop_entry() # Params: entry_name, name, exec, icon, version
 {
     { 
         echo "[Desktop Entry]"
@@ -38,22 +38,23 @@ create_desktop_entry() # Params: entry_name, name, exec, icon
         echo "Comment=Integrated Development Environment"
         echo "NoDisplay=false"
         echo "Categories=Development;IDE;"
+        echo "Version=$5"
     } > "/home/utnso/.local/share/applications/$1.desktop"
 
     cp "/home/utnso/.local/share/applications/$1.desktop" "/home/utnso/Desktop/"
 }
 
 # Install Eclipse IDE
-get_package "https://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/2021-03/R/eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz" "eclipse" "/opt/eclipse-cpp"
-create_desktop_entry "eclipse-cpp" "Eclipse IDE" "/opt/eclipse-cpp/eclipse" "/opt/eclipse-cpp/icon.xpm"
+get_package "https://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/2021-03/R/eclipse-cpp-2021-03-R-linux-gtk-x86_64.tar.gz" "eclipse" "/opt/eclipse"
+create_desktop_entry "eclipse" "Eclipse IDE" "/opt/eclipse/eclipse" "/opt/eclipse/icon.xpm" "2021-03"
 
 # Install Visual Studio Code
-get_package "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64" "VSCode-linux-x64" "/opt/vscode"
-create_desktop_entry "vscode" "Visual Studio Code" "/opt/vscode/code" "/opt/vscode/resources/app/resources/linux/code.png"
+get_package "https://update.code.visualstudio.com/1.55.2/linux-x64/stable" "VSCode-linux-x64" "/opt/vscode"
+create_desktop_entry "code" "Visual Studio Code" "/opt/vscode/code" "/opt/vscode/resources/app/resources/linux/code.png" "1.55.2"
 
 # Install CLion
 get_package "https://download.jetbrains.com/cpp/CLion-2021.1.tar.gz" "clion-2021.1" "/opt/clion"
-create_desktop_entry "clion" "CLion" "/opt/clion/bin/clion.sh" "/opt/clion/bin/clion.svg"
+create_desktop_entry "clion" "CLion" "/opt/clion/bin/clion.sh" "/opt/clion/bin/clion.svg" "2021.1"
 
 # Utils
 apt-get install -y terminator chromium-browser bless xclip
